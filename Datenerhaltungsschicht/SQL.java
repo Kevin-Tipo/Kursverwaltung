@@ -28,20 +28,18 @@ public class SQL {
 			//Verbindung zur Datenbank
 			Connection MyConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/kursverwaltung","root","");
 			
-			//Objekt zum abfragen bzw für sql anweisungen
+			//Objekt zum abfragen bzw fÃ¼r sql anweisungen
 			Statement fragMichWas = MyConnection.createStatement();
 			
 			//Abfrage
-			ResultSet test = fragMichWas.executeQuery("select * from schüler");
+			ResultSet test = fragMichWas.executeQuery("select * from schÃ¼ler");
 			
 			//Ausgabe
 			while (test.next()){
-				System.out.print(test.getString(1)+ " "); //1 steht für die Spalte kan aber auch mit namen genannt werden in ""
+				System.out.print(test.getString(1)+ " "); //1 steht fÃ¼r die Spalte kan aber auch mit namen genannt werden in ""
 				System.out.print(test.getString(2)+ " ");
 				System.out.println(test.getString(3));
 			}
-			
-		
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -49,6 +47,38 @@ public class SQL {
 		}
 		
 
+	}
+	
+public static void SQL_abfragen(String abfrage) {
+		
+		try {			
+			//Verbindung zur Datenbank
+			Connection MyConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/kursverwaltung","root","");
+			
+			//Objekt zum abfragen bzw fÃ¼r sql anweisungen
+			Statement fragMichWas = MyConnection.createStatement();
+			
+			//Abfrage
+			ResultSet ergebnis_res = fragMichWas.executeQuery(abfrage);
+			
+			//Ausgabe
+			for (int i = 0; i < 9; i++) {
+				System.out.println(ergebnis_res.getString(i)+ " ");
+				ergebnis_res.next();
+			}
+		}	
+				
+			
+//			while (ergebnis_res.next()){
+//				System.out.print(ergebnis_res.getString(1)+ " "); //1 steht fÃ¼r die Spalte kan aber auch mit namen genannt werden in ""
+//				System.out.print(ergebnis_res.getString(2)+ " ");
+//				System.out.println(ergebnis_res.getString(3));
+//			}
+	
+		 catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
