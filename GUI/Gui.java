@@ -46,7 +46,7 @@ public class Gui extends JFrame {
 		contentPane.add(tabbedPane);
 		
 		JPanel uebersicht = new JPanel();
-		tabbedPane.addTab("�bersicht", null, uebersicht, null);
+		tabbedPane.addTab("Übersicht", null, uebersicht, null);
 		uebersicht.setLayout(null);
 		
 		JLabel lblLetzeEingetrageneNote = new JLabel("Letze Eingetragene Note:");
@@ -75,6 +75,18 @@ public class Gui extends JFrame {
 		
 		notentabelle_ueb = new JTable();
 		notenausgeben.add(notentabelle_ueb);
+		PAusgabe.setBounds(20,335,620,265);     //Müssen noch angepasst werden
+		final String[][] columnNames = {
+                "Schüler","Fächer","Noten"
+                };
+                final String[] data = {
+                     "1","2","3" };
+                final JTable table = new JTable(columnNames,data);
+                table.setPreferredScrollableViewportSize(new Dimension (600,240));
+                table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+                JScrollPane pane = new JScrollPane(table);
+                PAusgabe.add(pane, BorderLayout.CENTER);
+                pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
 		JLabel lblSchlerin = new JLabel("Sch\u00FCler/in:");
 		lblSchlerin.setBounds(412, 48, 63, 16);
