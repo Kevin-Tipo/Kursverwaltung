@@ -1,20 +1,21 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.sql.SQLException;
 
 import Datenerhaltungsschicht.SQL;
 import Fachkonzeptschicht.test;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		
-		SQL.SQL_aufrufen();
-		
+//		SQL.SQL_aufrufen();
+			test.test();
 //		test.helfer();
 		
 		
-		// Oberfl‰che erstellen
+		// Oberfl√§che erstellen
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
