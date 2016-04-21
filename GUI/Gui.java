@@ -5,9 +5,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
+import javax.swing.JScrollPane;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.JList;
 import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
@@ -54,7 +56,6 @@ public class Gui extends JFrame {
 		JLabel lblNote = new JLabel("*Note*");
 		lblNote.setBounds(154, 0, 53, 42);
 		uebersicht.add(lblNote);
-		lblNote.setText("irgendwas");
 		
 		JLabel lblFach = new JLabel("Fach:");
 		lblFach.setBounds(219, 0, 41, 42);
@@ -74,14 +75,22 @@ public class Gui extends JFrame {
 		
 		notentabelle_ueb = new JTable();
 		notenausgeben.add(notentabelle_ueb);
+		PAusgabe.setBounds(20,335,620,265);     //Müssen noch angepasst werden
+		final String[][] columnNames = {
+                "Schüler","Fächer","Noten"
+                };
+                final String[] data = {
+                     "1","2","3" };
+                final JTable table = new JTable(columnNames,data);
+                table.setPreferredScrollableViewportSize(new Dimension (600,240));
+                table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+                JScrollPane pane = new JScrollPane(table);
+                PAusgabe.add(pane, BorderLayout.CENTER);
+                pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
 		JLabel lblSchlerin = new JLabel("Sch\u00FCler/in:");
 		lblSchlerin.setBounds(412, 48, 63, 16);
 		contentPane.add(lblSchlerin);
-		
-		JLabel lblPatrick = new JLabel("Patrick");
-		lblPatrick.setBounds(487, 48, 56, 16);
-		contentPane.add(lblPatrick);
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
@@ -101,15 +110,6 @@ public class Gui extends JFrame {
 		});
 	}
 	
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-	public JTable getNotentabelle_ueb() {
-		return notentabelle_ueb;
-	}
 	public void setNotentabelle_ueb(JTable notentabelle_ueb) {
 		this.notentabelle_ueb = notentabelle_ueb;
 	}
