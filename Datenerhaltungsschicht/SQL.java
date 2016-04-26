@@ -69,11 +69,11 @@ public static void SQL_abfragen(String abfrage) {
 		}	
 				
 			
-//			while (ergebnis_res.next()){
-//				System.out.print(ergebnis_res.getString(1)+ " "); //1 steht für die Spalte kan aber auch mit namen genannt werden in ""
-//				System.out.print(ergebnis_res.getString(2)+ " ");
-//				System.out.println(ergebnis_res.getString(3));
-//			}
+			while (ergebnis_res.next()){
+				System.out.print(ergebnis_res.getString(1)+ " "); //1 steht für die Spalte kan aber auch mit namen genannt werden in ""
+				System.out.print(ergebnis_res.getString(2)+ " ");
+				System.out.println(ergebnis_res.getString(3));
+			}
 	
 		 catch (SQLException e) {
 			// TODO Auto-generated catch block
