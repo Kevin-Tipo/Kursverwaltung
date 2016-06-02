@@ -17,7 +17,7 @@ public class SQL {
 	
 	
 	public void Verbindung() throws SQLException{
-		Connection MyConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/kursverwaltung","root","");
+		Connection MyConnection = DriverManager.getConnection("jdbc:mysql://pazim.de:3306/kursverwaltung","db12612539-skurs","");
 	}
 	
 	
