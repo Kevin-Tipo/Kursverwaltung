@@ -34,7 +34,7 @@ public class SQL {
 			Statement fragMichWas = MyConnection.createStatement();
 			
 			//Abfrage
-			ResultSet test = fragMichWas.executeQuery("select * from schÃ¼ler");
+			ResultSet test = fragMichWas.executeQuery("select * from schueler");
 			
 			//Ausgabe
 			while (test.next()){
