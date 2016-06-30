@@ -1,0 +1,67 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+ 
+public class MySQLConnection{
+private static Connection con = null;
+private static String dbHost = "pazim.de";             // Hostname
+private static String dbPort = "3306";                 // Port -- Standard: 3306
+private static String dbName = "db12612539-Kursverwaltung";                     // Datenbankname
+private static String dbUser = "db12612539-SKurs";     // Datenbankuser
+private static String dbPass = "EhgYwZp2";             // Datenbankpasswort
+ 
+private MySQLConnection(){
+    try {
+        Class.forName("com.mysql.jdbc.Driver"); // Datenbanktreiber für JDBC Schnittstellen laden.
+ 
+        // Verbindung zur JDBC-Datenbank herstellen.
+        con = DriverManager.getConnection("jdbc:mysql://"+dbHost+":"+ dbPort+"/"+dbName+"?"+"user="+dbUser+"&"+"password="+dbPass);
+    } catch (ClassNotFoundException e) {
+        System.out.println("Treiber nicht gefunden");
+    } catch (SQLException e) {
+        System.out.println("Verbindung nicht moglich");
+        System.out.println("SQLException: " + e.getMessage());
+        System.out.println("SQLState: " + e.getSQLState());
+        System.out.println("VendorError: " + e.getErrorCode());
+    }
+  }
+ 
+private static Connection getInstance(){
+    if(con == null)
+        new MySQLConnection();
+    return con;
+}
+ 
+  //Gebe Tabelle in die Konsole aus
+  public static void Schuelerliste(){
+      con = getInstance();
+ 
+      if(con != null){
+      // Abfrage-Statement erzeugen.
+      Statement query;
+      try {
+          query = con.createStatement();
+ 
+          // Tabelle anzeigen
+          String sql =
+                "SELECT vorname, nachname, Schueler_ID  FROM Schueler";
+          ResultSet result = query.executeQuery(sql);
+ 
+        // Ergebnisstabelle durchforsten
+          while (result.next()) {
+          String Schueler_ID = result.getString("Schueler_ID");
+          String vorname = result.getString("vorname");
+          String nachname = result.getString("nachname");
+        //String email = result.getString("email");          
+          String info = Schueler_ID + ", " + vorname + ", " + nachname + ", ";
+         
+          System.out.println(info);
+          }
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+}
