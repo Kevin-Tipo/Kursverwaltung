@@ -1,0 +1,6 @@
+public class Test{
+  public static void main(String[] args){
+    // Abfrage aller vorhandenen Daten in der Tabelle
+    MySQLConnection.printNameList();
+  }
+}
